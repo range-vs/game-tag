@@ -1,6 +1,6 @@
 # Пятнашки
 
-![Пятнашки](https://ibb.co/Gd3kDWR)
-![Пятнашки](https://ibb.co/sQr5Fqy)
+![Пятнашки](https://imgbb.com/][img]https://i.ibb.co/0nVZLCr/image.png)
+![Пятнашки](https://imgbb.com/][img]https://i.ibb.co/zbw8SZG/image.png)
 
 Простенькие пятнашки на Qt (Widgets, signals - slots)
