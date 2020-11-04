@@ -71,17 +71,17 @@ class Game: public QWidget
             }
     }
 
-    void debugOutputGrid()
-    {
-        qDebug() << "DEBUG:";
-        for(int i(0); i < 4; ++i)
-            for(int j(0); j < 4; ++j)
-                if(gameMap->itemAtPosition(i, j))
-                    qDebug() << qobject_cast<CustomLabel*>(gameMap->itemAtPosition(i, j)->widget())->text();
-                else
-                    qDebug() << "nullptr";
-         qDebug() << "DEBUG END";
-    }
+//    void debugOutputGrid()
+//    {
+//        qDebug() << "DEBUG:";
+//        for(int i(0); i < 4; ++i)
+//            for(int j(0); j < 4; ++j)
+//                if(gameMap->itemAtPosition(i, j))
+//                    qDebug() << qobject_cast<CustomLabel*>(gameMap->itemAtPosition(i, j)->widget())->text();
+//                else
+//                    qDebug() << "nullptr";
+//         qDebug() << "DEBUG END";
+//    }
 
 public:
     Game(QWidget* obj = nullptr): QWidget(obj), currentDice(nullptr){}
@@ -100,11 +100,11 @@ public:
         //setWindowFlag(Qt::MSWindowsFixedSizeDialogHint, true);
 
         QVBoxLayout* mainLayout = new QVBoxLayout();
-        mainLayout->setSpacing(15);
+        mainLayout->setSpacing(30);
 
         mainLabel = new QLabel("Please, start new game...");
         mainLabel->setAlignment(Qt::AlignCenter);
-        mainLabel->setFixedHeight(30);
+        mainLabel->setMargin(10);
 
         gameMap = new QGridLayout();
         gameMap->setSpacing(10);
@@ -128,6 +128,7 @@ public:
         dopLayout->addWidget(exit);
 
         mainLayout->addWidget(mainLabel);
+        mainLayout->addStretch();
         mainLayout->addLayout(gameMap);
         mainLayout->addStretch();
         mainLayout->addLayout(dopLayout);
@@ -221,3 +222,7 @@ public slots:
     }
 
 };
+
+// завтра:
+// ловить resize, и перерасчитывать размер ячеек пропорционально ширине окна (андроид и windows)
+// удалить старый андро сдк(из qt), и прописать пути к новому (android studio)
