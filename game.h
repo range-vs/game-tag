@@ -17,11 +17,10 @@ class Game: public QWidget
     CustomLabel* createDice(int r, int c, QString text, bool en = true)
     {
         CustomLabel* elem = new CustomLabel(text);
-        //QObject::connect(elem, SIGNAL(clicked()), this, SLOT(clickDice()));
         elem->setCursor(Qt::PointingHandCursor);
         elem->setLineWidth(3);
-        elem->resize(50, 50);
         elem->setAlignment(Qt::AlignCenter);
+        elem->setFixedSize(QSize(90,90));
         QFont font = elem->font();
         font.setPixelSize(20);
         elem->setFont(font);
@@ -90,7 +89,7 @@ public:
     void run(const QApplication& a)
     {
         setWindowTitle("Game tag");
-        resize(400, 450);
+        setFixedWidth(400);
         setGeometry(QStyle::alignedRect(
                                  Qt::LeftToRight,
                                  Qt::AlignCenter,
@@ -98,15 +97,14 @@ public:
                                  a.screens().at(0)->availableGeometry()
                              ));
 
-        setWindowFlag(Qt::MSWindowsFixedSizeDialogHint, true);
+        //setWindowFlag(Qt::MSWindowsFixedSizeDialogHint, true);
 
         QVBoxLayout* mainLayout = new QVBoxLayout();
         mainLayout->setSpacing(15);
 
         mainLabel = new QLabel("Please, start new game...");
-        //mainLabel->setContentsMargins(10,0,10,0);
         mainLabel->setAlignment(Qt::AlignCenter);
-        mainLabel->setMaximumSize(QSize(400, 30));
+        mainLabel->setFixedHeight(30);
 
         gameMap = new QGridLayout();
         gameMap->setSpacing(10);
@@ -119,6 +117,7 @@ public:
                 QObject::connect(elem, SIGNAL(clicked()), this, SLOT(clickDice()));
             }
 
+
         QHBoxLayout* dopLayout = new QHBoxLayout();
         QPushButton* newGame = new QPushButton("New game");
         QObject::connect(newGame, SIGNAL(clicked()), this, SLOT(newGame()));
@@ -130,6 +129,7 @@ public:
 
         mainLayout->addWidget(mainLabel);
         mainLayout->addLayout(gameMap);
+        mainLayout->addStretch();
         mainLayout->addLayout(dopLayout);
 
         setLayout(mainLayout);

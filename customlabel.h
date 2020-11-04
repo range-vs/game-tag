@@ -15,7 +15,7 @@ public:
         CustomLabel* elem = new CustomLabel(text());
         elem->setCursor(cursor());
         elem->setLineWidth(lineWidth());
-        elem->resize(size());
+        elem->setFixedSize(size());
         elem->setAlignment(alignment());
         elem->setFont(font());
         elem->setPalette(palette());
