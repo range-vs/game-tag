@@ -60,7 +60,7 @@ class Game: public QWidget
                 auto* li(gameMap->itemAtPosition(i, j));
                 if(!li || !li->widget())
                     continue;
-                li->widget()->setEnabled(false);
+                li->widget()->setEnabled(true);
             }
     }
 
