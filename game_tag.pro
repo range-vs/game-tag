@@ -23,5 +23,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    centralsquarelayout.h \
     customlabel.h \
-    game.h
+    game.h \
+    testlbl.h

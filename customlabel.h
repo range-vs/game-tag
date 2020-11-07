@@ -12,10 +12,9 @@ public:
 
     CustomLabel* clone()
     {
-        CustomLabel* elem = new CustomLabel(text());
+        auto* elem(new CustomLabel(text()));
         elem->setCursor(cursor());
         elem->setLineWidth(lineWidth());
-        elem->setFixedSize(size());
         elem->setAlignment(alignment());
         elem->setFont(font());
         elem->setPalette(palette());
@@ -24,8 +23,20 @@ public:
         return elem;
     }
 
+    bool hasHeightForWidth()const override
+    {
+        return true;
+    }
+
+    int heightForWidth( int w )const override
+    {
+        return w;
+    }
+
+
 signals:
-    void clicked();
+    void unpressed();
+    void pressed();
 
 protected:
     bool event(QEvent* evt) override
@@ -34,7 +45,12 @@ protected:
         {
             case(QEvent :: MouseButtonRelease):
             {
-                emit clicked();
+                emit unpressed();
+                break;
+            }
+            case(QEvent :: MouseButtonPress):
+            {
+                emit pressed();
                 break;
             }
         }
